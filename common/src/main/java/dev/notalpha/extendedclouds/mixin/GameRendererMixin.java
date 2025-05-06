@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(GameRenderer.class)
 public abstract class GameRendererMixin {
-	@Inject(method = "method_32796", at = @At("RETURN"), cancellable = true)
+	@Inject(method = "getFarPlaneDistance", at = @At("RETURN"), cancellable = true)
 	private void extend_distance(CallbackInfoReturnable<Float> cir) {
 		if (ExtendedClouds.CONFIG.extendFrustum) {
 			cir.setReturnValue((float) (cir.getReturnValue() * ExtendedClouds.CONFIG.getMultiplier()));
